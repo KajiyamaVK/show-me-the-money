@@ -1,16 +1,20 @@
-import { ThemeProvider } from "styled-components"
-import { defaultTheme } from "./styles/themes/default"
-import { GlobalStyle } from "./styles/global"
-
+import { ThemeProvider, StyleSheetManager } from 'styled-components'
+import isPropValid from '@emotion/is-prop-valid'
+import { defaultTheme } from './styles/themes/default'
+import { GlobalStyle } from './styles/global'
+import MainHeader from './components/MainHeader'
+import SearchContainer from './components/SearchContainer'
 
 function App() {
-
   return (
     <>
-    <ThemeProvider theme={defaultTheme }>
-      <GlobalStyle/>
-      <h1>My test</h1>
-    </ThemeProvider>
+      <StyleSheetManager shouldForwardProp={isPropValid}>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalStyle />
+          <MainHeader />
+          <SearchContainer />
+        </ThemeProvider>
+      </StyleSheetManager>
     </>
   )
 }
